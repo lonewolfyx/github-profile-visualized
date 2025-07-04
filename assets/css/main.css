@@ -1,0 +1,9 @@
+@layer base {
+    html,#__nuxt{
+        @apply relative w-full h-full;
+    }
+
+    body{
+        @apply relative w-full min-h-full;
+    }
+}

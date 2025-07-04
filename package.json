@@ -1,0 +1,45 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxi dev --dotenv .env",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "nuxt lint",
+    "lint:fix": "eslint --fix"
+  },
+  "dependencies": {
+    "@antv/g2": "^5.3.3",
+    "@tailwindcss/vite": "^4.1.11",
+    "@vueuse/core": "^13.4.0",
+    "axios": "^1.10.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "echarts": "^5.6.0",
+    "lucide-vue-next": "^0.525.0",
+    "motion-v": "^1.3.1",
+    "nuxt": "^3.17.5",
+    "reka-ui": "^2.3.1",
+    "shadcn-nuxt": "^2.2.0",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss": "^4.1.11",
+    "tw-animate-css": "^1.3.4",
+    "vue": "^3.5.17",
+    "vue-echarts": "^7.0.3",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@iconify/vue": "^5.0.0",
+    "@nuxt/eslint": "^1.4.1",
+    "@nuxt/fonts": "^0.11.4",
+    "dayjs": "^1.11.13",
+    "eslint": "^9.30.0",
+    "sass-embedded": "^1.89.2",
+    "tippy.js": "^6.3.7",
+    "vue3-calendar-heatmap": "^2.0.5",
+    "web-random-utils": "^1.0.3"
+  }
+}
