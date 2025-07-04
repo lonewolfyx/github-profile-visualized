@@ -12,6 +12,7 @@ export default withNuxt(
             'vue/valid-template-root': 'off',
             '@typescript-eslint/no-unused-vars': 'off',
             'no-async-promise-executor': 'off',
+            'vue/no-multiple-template-root': 'off',
         },
     },
 )
