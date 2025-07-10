@@ -8,7 +8,7 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
 import type { Step } from '~/components/ui/multi-step-loader'
-import { getUserName } from '~/utils/utils'
+
 import {
     fetchAggregateGithubUserData,
     fetchGithubUser,
@@ -19,6 +19,26 @@ import { summarizeRepoLanguages, transformContribution } from '~/utils/transform
 import type { IContributionCalendar } from '~/types/contribution'
 import { fetchGithubUserRecentActivity } from '~/utils/githubRecentActivity'
 import { transformGithubUserState } from '~/utils/parse/state'
+
+const route = useRoute()
+
+const username = ref<string>('')
+
+watch(
+    () => route.params.username,
+    (newVal) => {
+        if (newVal) {
+            username.value = newVal as string
+            console.log('Route param loaded:', newVal)
+            // 调用数据加载逻辑
+        }
+    },
+    {
+        immediate: true,
+    },
+)
+
+const getUserName = (): string => username.value
 
 // init data
 const InitializingData = (): Promise<boolean> => {
@@ -160,7 +180,7 @@ const steps: Step[] = [
 ]
 
 onMounted(() => {
+    console.log(getUserName())
     useGithubData.isLoadingStatus = !useGithubData.isLoadingStatus
-    console.log(111)
 })
 </script>

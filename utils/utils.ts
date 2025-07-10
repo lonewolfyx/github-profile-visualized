@@ -1,7 +1,3 @@
-const route = useRoute()
-
-export const getUserName = (): string => route.params.username as string
-
 /**
  * 数值千分位分隔函数
  * 例：36405  →  "36,405"
