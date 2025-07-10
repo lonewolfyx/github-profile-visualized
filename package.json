@@ -1,8 +1,10 @@
 {
-  "name": "nuxt-app",
-  "version": "0.0.1",
-  "private": true,
+  "name": "github-profile-visualized",
   "type": "module",
+  "version": "0.0.1",
+  "description": "Elegant GitHub Profile Visualization, Gain insights into your contributions, expertise, and community engagement with intuitive visualizations",
+  "author": "lonewolfyx (https://github.com/lonewolfyx)",
+  "private": true,
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxi dev --dotenv .env",
@@ -12,6 +14,26 @@
     "lint": "nuxt lint",
     "lint:fix": "eslint --fix"
   },
+  "homepage": "https://github.com/lonewolfyx/github-profile-visualized",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lonewolfyx/github-profile-visualized.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lonewolfyx/github-profile-visualized/issues"
+  },
+  "keywords": [
+    "github",
+    "profile",
+    "visualization",
+    "insights",
+    "contributions",
+    "expertise",
+    "community",
+    "intuitive",
+    "elegant",
+    "nuxt"
+  ],
   "dependencies": {
     "@antv/g2": "^5.3.3",
     "@tailwindcss/vite": "^4.1.11",
