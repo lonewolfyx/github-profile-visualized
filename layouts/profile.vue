@@ -18,7 +18,7 @@
                             <span>Visualized</span>
                             <span
                                 class="border p-1 text-xs  bg-default-github border-default-github rounded-2xl px-2"
-                            >v{{ version }}</span>
+                            >v{{ pack.version }}</span>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@ import DynamicIsland from '~/components/DynamicIsland/index.vue'
 import { useGithubData } from '~/store/useGithubData'
 import { cn } from '~/lib/utils'
 import { buttonVariants } from '~/components/ui/button'
-import version from '~/package.json'
+import pack from '~/package.json'
 </script>
 
 <style scoped>
