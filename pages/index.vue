@@ -53,6 +53,7 @@
                 >NuxtJs v3.17.5</a> & <a
                     href="https://tailwindcss.com/"
                     title="Tailwindcss"
+                    target="_blank"
                 >Tailwindcss</a> By <a
                     href="https://github.com/lonewolfyx"
                     target="_blank"
