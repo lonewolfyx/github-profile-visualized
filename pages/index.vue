@@ -32,15 +32,15 @@
             </h2>
             <div class="flex w-full max-w-sm items-center gap-1.5 mb-20">
                 <Input
-                    id="email"
+                    v-model="username"
                     class="focus-visible:shadow-none  bg-default-github border-default-github"
                     placeholder="Enter a Github Username..."
-                    type="email"
+                    type="text"
                 />
                 <Button
                     class="cursor-pointer"
                     variant="github"
-                    @click="() => { console.log(123) }"
+                    @click="handleVisualize"
                 >
                     Visualize
                 </Button>
@@ -86,4 +86,8 @@
 
 <script lang="ts" setup>
 import { Ripple } from '~/components/ui/ripple'
+
+const username = ref<string>('')
+
+const handleVisualize = () => navigateTo(`/${username.value}`)
 </script>
