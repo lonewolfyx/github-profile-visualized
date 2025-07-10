@@ -86,6 +86,7 @@ import DynamicIsland from '~/components/DynamicIsland/index.vue'
 import { useGithubData } from '~/store/useGithubData'
 import { cn } from '~/lib/utils'
 import { buttonVariants } from '~/components/ui/button'
+import version from '~/package.json'
 </script>
 
 <style scoped>
