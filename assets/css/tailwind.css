@@ -128,3 +128,8 @@
         @apply bg-black text-foreground ;
     }
 }
+
+
+::-webkit-scrollbar {
+    @apply w-0 h-0;
+}
