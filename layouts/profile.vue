@@ -56,13 +56,21 @@
                     <!--                        width="16" -->
                     <!--                    /> -->
                     <!--                </Button> -->
-                    <Button class="cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600">
+                    <a
+                        :class="cn(
+                            buttonVariants(),
+                            'cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600',
+                        )"
+                        href="https://github.com/lonewolfyx/github-profile-visualized"
+                        title="Github Profile Visualize"
+                        target="_blank"
+                    >
                         <Icons
                             height="16"
                             icon="mdi:github"
                             width="16"
                         />
-                    </Button>
+                    </a>
                 </div>
             </div>
 
@@ -76,7 +84,8 @@
 <script lang="ts" setup>
 import DynamicIsland from '~/components/DynamicIsland/index.vue'
 import { useGithubData } from '~/store/useGithubData'
-import { version } from '~/package.json'
+import { cn } from '~/lib/utils'
+import { buttonVariants } from '~/components/ui/button'
 </script>
 
 <style scoped>
