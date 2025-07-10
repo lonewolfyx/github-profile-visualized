@@ -16,10 +16,14 @@
                     <span
                         :class="cn(
                             // text-xl font-mono font-bold  text-shadow-[0_1px_2px] text-shadow-orange-500
-                            'text-xl font-mono font-bold text-shadow-[0_1px_2px]',
-                            `text-${state[keys].color}`,
-                            `text-shadow-${state[keys].color}`,
+                            'text-xl font-mono font-bold',
+                            // `text-${state[keys].color}`,
+                            // `text-shadow-${state[keys].color}`,
                         )"
+                        :style="{
+                            color: colors[state[keys].color as keyof typeof colors],
+                            textShadow: `0 1px 2px ${colors[state[keys].color as keyof typeof colors]}`,
+                        }"
                     >{{ state[keys].level }}</span>
                 </div>
             </div>
@@ -36,6 +40,7 @@
 <script lang="ts" setup>
 import { useGithubData } from '~/store/useGithubData'
 import { cn } from '~/lib/utils'
+import { colors } from '~/constant/color'
 
 const { state } = useGithubData
 </script>
