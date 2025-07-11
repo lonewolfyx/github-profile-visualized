@@ -75,8 +75,6 @@
             <div
                 class="absolute inset-x-0 bottom-0 z-[-1] h-full bg-default-github"
             />
-
-            <Toaster position="top-center" />
         </div>
     </Transition>
 </template>
@@ -86,8 +84,6 @@ import { computed, reactive, ref, watch, watchEffect } from 'vue'
 import { toast } from 'vue-sonner'
 import type { Props, Step } from '~/components/ui/multi-step-loader/index'
 import { useGithubData } from '~/store/useGithubData'
-import { Toaster } from '@/components/ui/sonner'
-import 'vue-sonner/style.css' // vue-sonner v2 requires this import
 
 const props = withDefaults(defineProps<Props>(), { active: true })
 
