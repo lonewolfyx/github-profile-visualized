@@ -58,6 +58,21 @@
                     </span>
                     <span class="text-sm font-medium text-gitColor-default tracking-widest">{{ step.label }}</span>
                 </div>
+                <a
+                  v-if="hasError"
+                  :class="cn(
+                      buttonVariants(),
+                      'cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600',
+                  )"
+                  href="/"
+                  title="Create a New Github Profile Visualize"
+                  >
+                      <Icons
+                          height="16"
+                          icon="lineicons:paint-roller-1"
+                          width="16"
+                      />
+                </a>
             </div>
             <div
                 class="absolute inset-x-0 bottom-0 z-[-1] h-full bg-default-github"
@@ -70,6 +85,8 @@
 import { computed, reactive, ref, watch, watchEffect } from 'vue'
 import type { Props, Step } from '~/components/ui/multi-step-loader/index'
 import { useGithubData } from '~/store/useGithubData'
+import { cn } from '~/lib/utils'
+import { buttonVariants } from '~/components/ui/button'
 
 const props = withDefaults(defineProps<Props>(), { active: true })
 
@@ -82,6 +99,7 @@ const flowActive = ref(false)
 /** 派生状态 */
 const anyRunning = computed(() => steps.some(s => s.status === 'running'))
 const hasPending = computed(() => steps.some(s => s.status === 'pending'))
+const hasError = computed(() => steps.some(s => s.status === 'error'))
 
 /** 重置所有步骤到 pending */
 function resetSteps() {
