@@ -43,8 +43,7 @@ Before you begin, ensure you have the following installed:
 
    Create a `.env` file in the root directory and add your GitHub Personal Access Token:
    ```env
-   GITHUB_TOKEN=your_github_personal_access_token_here
-   NEXT_PUBLIC_GITHUB_CLIENT_ID=your_github_client_id
+   NUXT_GITHUB_TOKEN=your_github_personal_access_token_here
    ```
 
    To get a GitHub Personal Access Token:
