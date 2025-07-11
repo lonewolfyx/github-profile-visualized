@@ -41,12 +41,7 @@
                             <span class="text-xs font-medium">{{ formatWithUnit(userInfo.followers?.totalCount, 2) }} followers</span>
                         </div>
                         <div class="flex gap-1 items-end">
-                            <Icons
-                                height="16"
-                                icon="mage:users"
-                                width="16"
-                            />
-                            <span class="text-xs font-medium">{{ formatWithUnit(userInfo.followers?.totalCount, 2) }} followers</span>
+                            <span class="text-xs font-medium">{{ formatWithUnit(userInfo.following?.totalCount, 2) }} following</span>
                         </div>
                         <div class="flex gap-1 items-end">
                             <Icons
