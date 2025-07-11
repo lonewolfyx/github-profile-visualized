@@ -24,3 +24,7 @@ export interface ITransformedContribution {
     total: number
     contributions: ITransformedContributionData[]
 }
+
+export interface IContributions {
+    [key: `Y${string}`]: IContributionCalendar
+}

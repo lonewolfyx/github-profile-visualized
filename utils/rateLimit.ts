@@ -1,5 +1,5 @@
 import { githubGraphql } from '~/utils/githubGraphql'
-import type { IRateLimit } from '~/types/user.info'
+import type { IRateLimit } from '~/types/graphql'
 
 export const getGithubRateLimit = async () => {
     const query = `

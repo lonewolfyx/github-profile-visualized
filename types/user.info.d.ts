@@ -1,10 +1,6 @@
-import type { IStatesTrend } from '~/types/state'
+import type { IContributions } from '~/types/contribution'
 
-export interface IContribution {
-    [key: `Y${string}`]: unknown
-}
-
-export interface IUserInfo extends IContribution {
+export interface IUserInfo extends IContributions {
     id: string
     login: string
     name: string
@@ -52,17 +48,4 @@ export interface IUserInfo extends IContribution {
         nodes: any
         totalCount: number
     }
-}
-
-export interface IRateLimit {
-    cost: number
-    limit: number
-    remaining: number
-    used: number
-    resetAt: string
-}
-
-export interface IGraphql {
-    user: IUserInfo
-    rateLimit: IRateLimit
 }

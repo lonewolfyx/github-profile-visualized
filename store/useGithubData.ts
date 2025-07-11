@@ -1,5 +1,5 @@
-import type { IRateLimit } from '~/types/user.info'
 import type { IRecentActivity } from '~/types/recent.activity'
+import type { IRateLimit } from '~/types/graphql'
 
 export const useGithubData = reactive({
     isLoadingStatus: false,

@@ -8,9 +8,8 @@ import {
     userInfoQuery,
     useRuntimeConfig,
 } from '#imports'
-import type { IGraphql } from '~/types/user.info'
 import { trendingQuery } from '~/utils/query'
-import type { IUserStatisticsTrend } from '~/types/graphql'
+import type { IGraphql, IUserStatisticsTrend } from '~/types/graphql'
 
 // 获取 GitHub 用户数据
 export const fetchGithubUser = async (username: string) => {

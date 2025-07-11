@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import type { IRateLimit } from '~/types/user.info'
+import type { IRateLimit } from '~/types/graphql'
 
 defineOptions({
     name: 'ApiRateLimit',
@@ -16,6 +16,9 @@ defineOptions({
 const rate = ref<IRateLimit>({
     remaining: 0,
     limit: 0,
+    cost: 0,
+    used: 0,
+    resetAt: '',
 })
 
 onMounted(async () => {
