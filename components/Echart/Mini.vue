@@ -79,7 +79,6 @@ const element = ref<{
 onMounted(() => {
     const { width, height } = chartContainerRef.value!.getBoundingClientRect()
     element.value = { width, height }
-    // console.log(element.value)
     const chart = new Chart({
         container: `container${props.id}`,
     })

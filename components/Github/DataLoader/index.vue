@@ -29,7 +29,6 @@ watch(
     (newVal) => {
         if (newVal) {
             username.value = newVal as string
-            console.log('Route param loaded:', newVal)
             // 调用数据加载逻辑
         }
     },
@@ -51,7 +50,6 @@ const InitializingData = (): Promise<boolean> => {
                 return reject(false)
             }
 
-            console.log('[initData] GitHub 数据:', data)
             resolve(true)
         }
         catch (e) {
@@ -128,11 +126,9 @@ const distillGithubData = (): Promise<boolean> => {
             useGithubData.languages = summarizeRepoLanguages(user?.repositories?.nodes)?.slice(0, 10)
             useGithubData.sponsors = user?.sponsors?.nodes?.filter((item: any) => !(item && typeof item === 'object' && !Object.keys(item).length))
             useGithubData.sponsoring = user?.sponsoring?.nodes?.filter((item: any) => !(item && typeof item === 'object' && !Object.keys(item).length))
-            console.log(user)
             resolve(true)
         }
         catch (e) {
-            console.log(e)
             reject(false)
         }
     })
@@ -173,14 +169,12 @@ const steps: Step[] = [
             setTimeout(() => {
                 resolve(true)
                 useGithubData.isLoadingStatus = false
-                console.log('useGithubData ===> ', useGithubData)
             }, 100)
         }), status: 'pending',
     },
 ]
 
 onMounted(() => {
-    console.log(getUserName())
     useGithubData.isLoadingStatus = !useGithubData.isLoadingStatus
 })
 </script>
