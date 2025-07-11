@@ -160,17 +160,20 @@ const distillGithubRecentActivityData = (): Promise<boolean> => {
 }
 
 const steps: Step[] = [
-    { label: 'Github 用户验证中...', action: InitializingData, status: 'pending' },
-    { label: 'Github 数据提取中...', action: distillGithubData, status: 'pending' },
-    { label: 'Github 统计数据提取中...', action: distillGithubStatisticsData, status: 'pending' },
-    { label: 'Github 最近活动提取中...', action: distillGithubRecentActivityData, status: 'pending' },
+    { label: 'Github 用户验证中...', action: InitializingData, status: 'pending', retryCount: 0 },
+    { label: 'Github 数据提取中...', action: distillGithubData, status: 'pending', retryCount: 0 },
+    { label: 'Github 统计数据提取中...', action: distillGithubStatisticsData, status: 'pending', retryCount: 0 },
+    { label: 'Github 最近活动提取中...', action: distillGithubRecentActivityData, status: 'pending', retryCount: 0 },
     {
-        label: 'Github 数据分析中...', action: () => new Promise<boolean>((resolve) => {
+        label: 'Github 数据分析中...',
+        action: () => new Promise<boolean>((resolve, reject) => {
             setTimeout(() => {
                 resolve(true)
                 useGithubData.isLoadingStatus = false
             }, 100)
-        }), status: 'pending',
+        }),
+        status: 'pending',
+        retryCount: 0,
     },
 ]
 
