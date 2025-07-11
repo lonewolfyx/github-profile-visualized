@@ -14,6 +14,7 @@
                     :href="userInfo.url"
                     :title="userInfo.name"
                     class="relative w-12 h-12 rounded-full shadow-[0_0_5px_1px_theme(color.default.theme)]"
+                    target="_blank"
                 >
                     <img
                         :src="userInfo.avatarUrl"
@@ -43,10 +44,10 @@
                         <div class="flex gap-1 items-end">
                             <Icons
                                 height="16"
-                                icon="mage:users"
+                                icon="tabler:user-star"
                                 width="16"
                             />
-                            <span class="text-xs font-medium">{{ formatWithUnit(userInfo.followers?.totalCount, 2) }} followers</span>
+                            <span class="text-xs font-medium">{{ formatWithUnit(userInfo.following?.totalCount, 2) }} following</span>
                         </div>
                         <div class="flex gap-1 items-end">
                             <Icons
