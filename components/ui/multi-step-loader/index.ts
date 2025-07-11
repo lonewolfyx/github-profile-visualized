@@ -6,6 +6,7 @@ export interface Step {
     label: string
     action: () => Promise<boolean>
     status: StepStatus
+    errorText?: string
 }
 
 /**

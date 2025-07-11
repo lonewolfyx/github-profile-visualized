@@ -13,66 +13,62 @@
         >
             <div class="flex flex-col gap-4">
                 <!-- 步骤列表 -->
-                <div
-                    v-for="(step, index) in steps"
-                    :key="index"
-                    class="flex justify-start items-center gap-2"
-                >
-                    <!-- 状态图标 -->
-                    <span class="w-5 h-5 inline-block">
-                        <!-- 等待 -->
-                        <Icons
-                            v-if="step.status === 'pending'"
-                            class="text-gray-500"
-                            height="16"
-                            icon="lucide:circle-dot"
-                            width="16"
-                        />
-
-                        <!-- 运行中 -->
-                        <Icons
-                            v-else-if="step.status === 'running'"
-                            class="animate-spin text-primary"
-                            height="16"
-                            icon="lucide:refresh-ccw"
-                            width="16"
-                        />
-
-                        <!-- 完成 -->
-                        <Icons
-                            v-else-if="step.status === 'done'"
-                            class="text-primary"
-                            height="16"
-                            icon="lucide:circle-check-big"
-                            width="16"
-                        />
-
-                        <!-- 失败 → 红色叉 -->
-                        <Icons
-                            v-else-if="step.status === 'error'"
-                            class="text-red-500"
-                            height="16"
-                            icon="lucide:angry"
-                            width="16"
-                        />
-                    </span>
-                    <span class="text-sm font-medium text-gitColor-default tracking-widest">{{ step.label }}</span>
-                </div>
-                <a
-                  v-if="hasError"
-                  :class="cn(
-                      buttonVariants(),
-                      'cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600',
-                  )"
-                  href="/"
-                  title="Create a New Github Profile Visualize"
-                  >
-                      <Icons
-                          height="16"
-                          icon="lineicons:paint-roller-1"
-                          width="16"
-                      />
-                </a>
+                 <template  v-for="(step, index) in steps" :key="index">
+                    <div
+                        class="flex justify-start items-center gap-2"
+                    >
+                        <!-- 状态图标 -->
+                        <span class="w-5 h-5 inline-block">
+                            <!-- 等待 -->
+                            <Icons
+                                v-if="step.status === 'pending'"
+                                class="text-gray-500"
+                                height="16"
+                                icon="lucide:circle-dot"
+                                width="16"
+                            />
+                        
+                            <!-- 运行中 -->
+                            <Icons
+                                v-else-if="step.status === 'running'"
+                                class="animate-spin text-primary"
+                                height="16"
+                                icon="lucide:refresh-ccw"
+                                width="16"
+                            />
+                        
+                            <!-- 完成 -->
+                            <Icons
+                                v-else-if="step.status === 'done'"
+                                class="text-primary"
+                                height="16"
+                                icon="lucide:circle-check-big"
+                                width="16"
+                            />
+                        
+                            <!-- 失败 → 红色叉 -->
+                            <Icons
+                                v-else-if="step.status === 'error'"
+                                class="text-red-500"
+                                height="16"
+                                icon="lucide:angry"
+                                width="16"
+                            />
+                        </span>
+                        <span class="text-sm font-medium text-gitColor-default tracking-widest">{{ step.label }}</span>
+                    </div>
+                    <div v-if="step.status === 'error'" class="p-4 bg-red-900/30 border border-red-800 rounded">
+                      <div class="flex items-start gap-3">
+                        <Icons class="text-red-500 flex-shrink-0 mt-0.5" height="18" icon="lucide:alert-triangle" width="18" />
+                        <div class="text-sm text-red-300  max-w-prose">
+                          <p>{{ step.errorText }}</p>
+                          <a class="text-xs md:text-sm text-gray-400 underline" href="/">
+                            Click me to initialization
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                 </template>
             </div>
             <div
                 class="absolute inset-x-0 bottom-0 z-[-1] h-full bg-default-github"
@@ -85,8 +81,6 @@
 import { computed, reactive, ref, watch, watchEffect } from 'vue'
 import type { Props, Step } from '~/components/ui/multi-step-loader/index'
 import { useGithubData } from '~/store/useGithubData'
-import { cn } from '~/lib/utils'
-import { buttonVariants } from '~/components/ui/button'
 
 const props = withDefaults(defineProps<Props>(), { active: true })
 
@@ -99,7 +93,6 @@ const flowActive = ref(false)
 /** 派生状态 */
 const anyRunning = computed(() => steps.some(s => s.status === 'running'))
 const hasPending = computed(() => steps.some(s => s.status === 'pending'))
-const hasError = computed(() => steps.some(s => s.status === 'error'))
 
 /** 重置所有步骤到 pending */
 function resetSteps() {
@@ -143,6 +136,7 @@ watchEffect(() => {
         })
         .catch(() => {
             next.status = 'error'
+            next.errorText = 'Some checks were not successful'
             flowActive.value = false
             console.log('显示错误', flowActive.value)
         })
