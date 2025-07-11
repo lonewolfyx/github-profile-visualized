@@ -156,15 +156,14 @@ watchEffect(() => {
             else {
                 next.status = 'error'
                 flowActive.value = false
-            }
-            // console.log('显示错误', flowActive.value)
 
-            toast(next.label.replace('中...', '失败!'), {
-                action: {
-                    label: 'Initialization',
-                    onClick: () => restartFlow(),
-                },
-            })
+                toast(next.label.replace('中...', '失败!'), {
+                    action: {
+                        label: 'Initialization',
+                        onClick: () => restartFlow(),
+                    },
+                })
+            }
         })
 })
 
