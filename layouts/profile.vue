@@ -42,13 +42,20 @@
                             width="16"
                         />
                     </Button>
-                    <Button class="cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600">
+                    <a
+                        :class="cn(
+                            buttonVariants(),
+                            'cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600',
+                        )"
+                        href="/"
+                        title="Create a New Github Profile Visualize"
+                    >
                         <Icons
                             height="16"
                             icon="lineicons:paint-roller-1"
                             width="16"
                         />
-                    </Button>
+                    </a>
                     <!--                <Button class="cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600"> -->
                     <!--                    <Icons -->
                     <!--                        height="16" -->
@@ -62,8 +69,8 @@
                             'cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600',
                         )"
                         href="https://github.com/lonewolfyx/github-profile-visualized"
-                        title="Github Profile Visualize"
                         target="_blank"
+                        title="Github Profile Visualize"
                     >
                         <Icons
                             height="16"
