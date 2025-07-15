@@ -14,6 +14,7 @@
                     :href="userInfo.url"
                     :title="userInfo.name"
                     class="relative w-12 h-12 rounded-full shadow-[0_0_5px_1px_theme(color.default.theme)]"
+                    target="_blank"
                 >
                     <img
                         :src="userInfo.avatarUrl"

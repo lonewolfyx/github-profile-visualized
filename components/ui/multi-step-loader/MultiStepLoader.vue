@@ -57,6 +57,19 @@
                         />
                     </span>
                     <span class="text-sm font-medium text-gitColor-default tracking-widest">{{ step.label }}</span>
+
+                    <button
+                        v-if="step.status === 'error'"
+                        class="flex items-center ml-2 px-2 py-0.5 text-sm text-white bg-red-500 rounded hover:bg-red-600"
+                        @click="retryStep(index)"
+                    >
+                        <Icons
+                            height="16"
+                            icon="stash:arrow-retry-duotone"
+                            width="16"
+                        />
+                        Retry
+                    </button>
                 </div>
             </div>
             <div
@@ -68,6 +81,7 @@
 
 <script lang="ts" setup>
 import { computed, reactive, ref, watch, watchEffect } from 'vue'
+import { toast } from 'vue-sonner'
 import type { Props, Step } from '~/components/ui/multi-step-loader/index'
 import { useGithubData } from '~/store/useGithubData'
 
@@ -87,6 +101,12 @@ const hasPending = computed(() => steps.some(s => s.status === 'pending'))
 function resetSteps() {
     steps.forEach(s => (s.status = 'pending'))
     flowActive.value = false
+}
+
+/** 重置所有步骤 */
+function restartFlow() {
+    resetSteps()
+    flowActive.value = true
 }
 
 /** 当 active 改变时处理 */
@@ -124,11 +144,33 @@ watchEffect(() => {
             next.status = 'done'
         })
         .catch(() => {
-            next.status = 'error'
-            flowActive.value = false
-            console.log('显示错误', flowActive.value)
+            next.retryCount++
+            // console.log('重试次数', next.retryCount)
+            if (next.retryCount < 3) {
+                next.status = 'pending'
+            }
+            else {
+                next.status = 'error'
+                flowActive.value = false
+
+                toast(next.label.replace('中...', '失败!'), {
+                    action: {
+                        label: 'Initialization',
+                        onClick: () => restartFlow(),
+                    },
+                })
+            }
         })
 })
+
+// 重置根据指定 index 步骤
+function retryStep(index: number) {
+    const step = steps[index]
+    if (step.status === 'error') {
+        step.status = 'pending'
+        flowActive.value = true
+    }
+}
 </script>
 
 <style scoped>

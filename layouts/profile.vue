@@ -28,7 +28,10 @@
                 </div>
 
                 <div class="flex justify-end gap-2 pt-4">
-                    <Button class="cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600">
+                    <Button
+                        class="cursor-pointer bg-default-github rounded-2xl hover:bg-slate-600"
+                        @click="copyPngToClipboard"
+                    >
                         <Icons
                             height="16"
                             icon="material-symbols-light:download"
@@ -85,6 +88,11 @@
 
             <ApiRateLimit />
         </template>
+
+        <Toaster
+            position="top-center"
+            theme="light"
+        />
     </div>
 </template>
 
@@ -94,6 +102,13 @@ import { useGithubData } from '~/store/useGithubData'
 import { cn } from '~/lib/utils'
 import { buttonVariants } from '~/components/ui/button'
 import pack from '~/package.json'
+import { Toaster } from '@/components/ui/sonner'
+import 'vue-sonner/style.css'
+import { copyPngToClipboard } from '~/utils/exports' // vue-sonner v2 requires this import
+
+nextTick(() => {
+    document.body.setAttribute('data-github-profile-visualize', '')
+})
 </script>
 
 <style scoped>
