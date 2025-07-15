@@ -15,7 +15,7 @@
                     />
 
                     <template v-if="items.type === 'star'">
-                        {{ items.action }}} repository
+                        {{ items.action }} repository
                         <component :is="createRepoLink(items.repo!)" />
                     </template>
 
