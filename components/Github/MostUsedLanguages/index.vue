@@ -20,7 +20,7 @@
                 <!--                &lt;!&ndash; 橙色 7% &ndash;&gt; -->
                 <!--                <div class="bg-orange-500 flex-none basis-[20%]" /> -->
                 <!--                &lt;!&ndash; 紫色 4% &ndash;&gt; -->
-                <div class="bg-purple-600 flex-none basis-[10%]" />
+                <!--                <div class="bg-purple-600 flex-none basis-[10%]" /> -->
                 <div
                     v-for="item in languages"
                     :key="`lgc${item.name}`"
