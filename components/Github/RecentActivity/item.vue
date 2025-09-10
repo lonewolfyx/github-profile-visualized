@@ -23,10 +23,15 @@
                         Created New {{ items.ref?.type }} on
                         <component :is="createRepoLink(items.repo!)" />
 
-                        {{
-                            items.ref?.type === 'branch' ? `branch <span
-                        class="rounded bg-gray-700 px-1 py-0.5 font-[monospace] text-sm">${items.ref?.name}</span>` : ``
-                        }}
+                        <template v-if="items.ref?.type === 'branch'"
+                        >
+                            branch 
+                            <span 
+                                class="rounded bg-gray-700 px-1 py-0.5 font-[monospace] text-sm"
+                            >
+                                {{items.ref?.name}}
+                            </span>
+                        </template>
                     </template>
                     <template v-if="items.type === 'public'">
                         Made
