@@ -37,7 +37,7 @@
   "dependencies": {
     "@antv/g2": "^5.3.3",
     "@tailwindcss/vite": "^4.1.11",
-    "@vueuse/core": "^13.4.0",
+    "@vueuse/core": "^14.0.0",
     "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
