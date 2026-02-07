@@ -61,7 +61,7 @@
     "@nuxt/eslint": "^1.4.1",
     "@nuxt/fonts": "^0.11.4",
     "dayjs": "^1.11.13",
-    "eslint": "^9.30.0",
+    "eslint": "^10.0.0",
     "sass-embedded": "^1.89.2",
     "tippy.js": "^6.3.7",
     "vue3-calendar-heatmap": "^2.0.5",
